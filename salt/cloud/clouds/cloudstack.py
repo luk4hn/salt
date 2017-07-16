@@ -493,7 +493,7 @@ def destroy(name, conn=None, call=None):
             {'name': volume.name},
         )
     log.info('Destroying VM: {0}'.format(name))
-    ret = conn.destroy_node(node)
+    ret = conn.destroy_node(node, ex_expunge=True)
     if not ret:
         log.error('Failed to Destroy VM: {0}'.format(name))
         return False
